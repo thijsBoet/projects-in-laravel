@@ -7,7 +7,7 @@
         <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/" tabindex="1">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('albums/create') ? 'active' : '' }}" href="{{ route('album-create') }}" tabindex="2">Create Album</a>
+        <a class="nav-link {{ Request::is('albums/create') ? 'active' : '' }}" href="{{ route('album-create') }}" tabindex="2">Create Photo Album</a>
       </li>
     </ul>
   </div>  

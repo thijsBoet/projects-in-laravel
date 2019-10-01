@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Photo;
+use Illuminate\Support\Facades\Storage;
 
 class PhotosController extends Controller
 {
@@ -49,15 +50,17 @@ class PhotosController extends Controller
 
         $filenameToStore = $filename . '_' . time() . '.' . $extension;
 
-        $request->file('photo')->storeAs('public/albums' . $request->input('albumId'), $filenameToStore);
+        $request->file('photo')->storeAs('public/albums/' . $request->input('album-id'), $filenameToStore);
 
         $photo = new Photo();
-        $photo->name = $request->input('name');
+        $photo->title = $request->input('title');
         $photo->description = $request->input('description');
-        $photo->cover_image = $filenameToStore;
+        $photo->photo = $filenameToStore;
+        $photo->size = $request->file('photo')->getSize();
+        $photo->album_id = $request->input('album-id');
         $photo->save();
 
-        return redirect('/photos')->with('success', 'Album created successfully!');
+        return redirect('/albums/' . $request->input('album-id'))->with('success', 'Photo saved successfully!');
     }
 
     /**
@@ -68,7 +71,7 @@ class PhotosController extends Controller
      */
     public function show($id)
     {
-        $photo = Photo::with('photos')->find($id);
+        $photo = Photo::find($id);
 
         return view('photos.show')->with('photo', $photo);
     }
@@ -104,6 +107,13 @@ class PhotosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $photo = Photo::find($id);
+
+        if(Storage::delete('/storage/albums/' . $photo->album->id . '/' . $photo->photo));
+        {
+            $photo->delete();
+            
+            return redirect('/')->with('success', 'Photo Deleted');
+        }
     }
 }

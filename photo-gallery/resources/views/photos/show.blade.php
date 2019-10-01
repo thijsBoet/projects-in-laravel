@@ -1,14 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">{{ $album->name }}</h1>
-      <p class="lead text-muted">{{ $album->description }}</p>
-      <p>
-        <a href="{{ route('route-create', $album->id') }}" class="btn btn-primary my-2">Upload photo</a>
-        <a href="/" class="btn btn-secondary my-2">Go Back</a>
-      </p>
-    </div>
-  </section>
+  <div>
+    <h3>{{ $photo->title }}</h3>
+    <p>{{ $photo->description }}</p>
+    
+    <form action="{{ route('photo-destroy', $photo->id) }}" method="POST">
+      @csrf
+      @method('DELETE')
+      <button type="submit" name="button" class="btn btn-danger float-right">DELETE</button>
+    </form>
+    <a href="{{ route('album-show', $photo->album->id) }}" class="btn btn-info">Go Back</a>
+    <hr>
+    <img src="/storage/albums/{{ $photo->album->id }}/{{ $photo->photo }}" alt="{{ $photo->photo }}">
+    <hr>
+
+    <small>Size: {{ $photo->size }}</small>
+  </div>
 @endsection

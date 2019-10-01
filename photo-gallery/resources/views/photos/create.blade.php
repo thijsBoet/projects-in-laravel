@@ -9,8 +9,8 @@
   @csrf
   <input type="hidden" name="album-id" value="{{ $album_id }}">
     <div class="form-group">
-      <label for="name">Title</label>
-      <input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
+      <label for="title">Title</label>
+      <input name="title" type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title">
     </div>
     <div class="form-group">
       <label for="description">Description</label>

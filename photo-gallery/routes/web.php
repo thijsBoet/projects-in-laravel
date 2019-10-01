@@ -20,7 +20,6 @@ Route::get('/albums/{id}', 'AlbumsController@show')->name('album-show');
 
 Route::get('/photos/create/{albumId}', 'PhotosController@create')->name('photo-create');
 Route::post('/photos/store', 'PhotosController@store')->name('photo-store');
-
-// Route::get('/', 'AlbumsController@');
-// Route::get('/', 'AlbumsController@');
+Route::get('/photos/{id}', 'PhotosController@show')->name('photo-show');
+Route::delete('/photos/{id}/delete', 'PhotosController@destroy')->name('photo-destroy');
 
