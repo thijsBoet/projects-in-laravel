@@ -7,7 +7,7 @@
   <form method="POST" action="{{ route('photo-store') }}" enctype="multipart/form-data">
   @method('POST')
   @csrf
-  
+  <input type="hidden" name="album-id" value="{{ $album_id }}">
     <div class="form-group">
       <label for="name">Title</label>
       <input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">

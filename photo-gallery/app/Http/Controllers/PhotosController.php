@@ -22,9 +22,9 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(int $albumId)
+    public function create(int $album_id)
     {
-        return view('photos.create')->with('albumId', $albumId);
+        return view('photos.create')->with('album_id', $album_id);
     }
 
     /**
