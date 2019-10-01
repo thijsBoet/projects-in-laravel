@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Photo Gallery</a>
+  <!-- <a class="navbar-brand" href="/">Photo Gallery</a> -->
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
@@ -7,8 +7,8 @@
         <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/" tabindex="1">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ Request::is('todo/create') ? 'active' : '' }}" href="todos/create" tabindex="2">Create Todo</a>
+        <a class="nav-link {{ Request::is('albums/create') ? 'active' : '' }}" href="{{ route('album-create') }}" tabindex="2">Create Album</a>
       </li>
     </ul>
-  </div>
+  </div>  
 </nav>

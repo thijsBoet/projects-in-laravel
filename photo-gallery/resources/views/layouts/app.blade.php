@@ -7,8 +7,9 @@
   <title>Photo Gallery</title>
 </head>
 <body>
-  <div class="container">
-    @include('inc.navbar')
+@include('inc.navbar')
+  <div class="container p-5">
+    @include('inc.messages')
     @yield('content')
   </div>
 </body>

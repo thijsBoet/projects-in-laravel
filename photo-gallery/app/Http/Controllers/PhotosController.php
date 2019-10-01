@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Photo;
 
 class PhotosController extends Controller
 {
@@ -21,9 +22,9 @@ class PhotosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(int $albumId)
     {
-        //
+        return view('photos.create')->with('albumId', $albumId);
     }
 
     /**
@@ -34,7 +35,29 @@ class PhotosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+            'photo' => 'required|image'
+        ]);
+
+        $filenameWithExtension = $request->file('photo')->getClientOriginalName();
+
+        $filename = pathinfo($filenameWithExtension, PATHINFO_FILENAME);
+
+        $extension = $request->file('photo')->getClientOriginalExtension();
+
+        $filenameToStore = $filename . '_' . time() . '.' . $extension;
+
+        $request->file('photo')->storeAs('public/albums' . $request->input('albumId'), $filenameToStore);
+
+        $photo = new Photo();
+        $photo->name = $request->input('name');
+        $photo->description = $request->input('description');
+        $photo->cover_image = $filenameToStore;
+        $photo->save();
+
+        return redirect('/photos')->with('success', 'Album created successfully!');
     }
 
     /**
@@ -45,7 +68,9 @@ class PhotosController extends Controller
      */
     public function show($id)
     {
-        //
+        $photo = Photo::with('photos')->find($id);
+
+        return view('photos.show')->with('photo', $photo);
     }
 
     /**

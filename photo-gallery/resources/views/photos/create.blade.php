@@ -2,14 +2,14 @@
 
 @section('content')
 
-  <h2>Create new Album</h2>
+  <h2>Upload new Photo</h2>
 
-  <form method="POST" action="{{ route('album-store') }}" enctype="multipart/form-data">
+  <form method="POST" action="{{ route('photo-store') }}" enctype="multipart/form-data">
   @method('POST')
   @csrf
-  <input type="hidden" name="albumId" value="{{ $albumId }}">
+  
     <div class="form-group">
-      <label for="name">Name</label>
+      <label for="name">Title</label>
       <input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
     </div>
     <div class="form-group">
@@ -17,11 +17,11 @@
       <input name="description" type="text" class="form-control" id="description" placeholder="Enter description">
     </div>
     <div class="form-group">
-      <label for="cover_image">Image</label>
-      <input name="cover_image" type="file" class="form-control p-1" id="cover_image">
+      <label for="photo">Photo</label>
+      <input name="photo" type="file" class="form-control p-1" id="photo">
     </div>
     <div>
-      <button type="submit" class="btn btn-warning btn-block">Create Album</button>
+      <button type="submit" class="btn btn-warning btn-block">Upload photo</button>
     </div>
   </form>
 @endsection
