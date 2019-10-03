@@ -15,6 +15,12 @@ class CreateListingsTable extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->string('street');
+            $table->integer('house number');
+            $table->string('house number addition');
+            $table->integer('telephone number')->unique();
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
