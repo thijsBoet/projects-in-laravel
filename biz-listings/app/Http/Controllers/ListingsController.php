@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Listing;
 
 class ListingsController extends Controller
 {
@@ -25,7 +26,7 @@ class ListingsController extends Controller
      */
     public function create()
     {
-        return view('/listings.create');
+        return view('listings.create');
     }
 
     /**
@@ -43,7 +44,7 @@ class ListingsController extends Controller
             ])
         );
 
-        return redirect('/listings');
+        return redirect('listings.index');
     }
 
     /**
@@ -79,7 +80,7 @@ class ListingsController extends Controller
     {
         $listing->update(request(['title', 'description']));
 
-        return redirect('/listing');
+        return redirect('listing');
     }
 
     /**
@@ -92,6 +93,6 @@ class ListingsController extends Controller
     {
         $listing->delete();
 
-        return redirect('/listing');
+        return redirect('listing');
     }
 }
