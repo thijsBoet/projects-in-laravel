@@ -21,7 +21,7 @@
       <input name="photo" type="file" class="form-control p-1" id="photo">
     </div>
     <div>
-      <button type="submit" class="btn btn-warning btn-block">Upload photo</button>
+      <button type="submit" class="btn btn-primary btn-block">Upload photo</button>
     </div>
   </form>
 @endsection

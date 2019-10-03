@@ -12,7 +12,7 @@
     </form>
     <a href="{{ route('album-show', $photo->album->id) }}" class="btn btn-info">Go Back</a>
     <hr>
-    <img src="/storage/albums/{{ $photo->album->id }}/{{ $photo->photo }}" alt="{{ $photo->photo }}">
+    <img src="/storage/albums/{{ $photo->album->id }}/{{ $photo->photo }}" alt="{{ $photo->photo }}" width="100%">
     <hr>
 
     <small>Size: {{ $photo->size }}</small>
