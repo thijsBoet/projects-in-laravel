@@ -15,11 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-Route::resource('listings', 'ListingsController');
-
-Route::get('/dashboard', 'DashboardController@index');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/', 'ListingController');
