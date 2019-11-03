@@ -24,7 +24,7 @@ class ListingController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -69,7 +69,7 @@ class ListingController extends Controller
      */
     public function update(Request $request, Listing $listing)
     {
-        //
+        return view('update');
     }
 
     /**
@@ -80,6 +80,6 @@ class ListingController extends Controller
      */
     public function destroy(Listing $listing)
     {
-        //
+        return view('delete');
     }
 }
